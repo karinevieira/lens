@@ -34,6 +34,8 @@ gem "tzinfo-data", "2.0.4", platforms: %i[mingw mswin x64_mingw jruby]
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", "1.6.1", platforms: %i[mri mingw x64_mingw]
+  # To help fixture creation [https://github.com/thoughtbot/factory_bot_rails]
+  gem "factory_bot_rails", "6.2.0"
 end
 
 group :development do
