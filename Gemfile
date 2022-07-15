@@ -45,3 +45,8 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "4.2.0"
 end
+
+group :test do
+  # Framework library to test our code [https://github.com/rspec/rspec-rails/]
+  gem "rspec-rails", "5.1.2"
+end
