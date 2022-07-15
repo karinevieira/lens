@@ -31,3 +31,47 @@ jobs:
 
       - name: Scan code
         run: brakeman -A -z -q
+
+  rspec:
+    name: RSpec
+    needs:
+      - rubocop
+      - brakeman
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgres://postgres:example@localhost:5432/lens_test
+    services:
+      postgres:
+        image: postgres:14.2
+        ports: ['5432:5432']
+        env:
+          POSTGRES_DB: lens_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: example
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Install postgres client
+        run: sudo apt-get install libpq-dev
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
+          node-version-file: '.node-version'
+
+      - name: Install Yarn packages
+        run: yarn install --check-files --pure-lockfile
+
+      - name: Create database structure
+        run: RAILS_ENV=test bundle exec rails db:reset
+
+      - name: Run tests
+        run: bundle exec rspec spec --format progress
