@@ -1,0 +1,17 @@
+name: CI
+on: [push]
+jobs:
+  rubocop:
+    name: Rubocop
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Lint code
+        run: bundle exec rubocop
