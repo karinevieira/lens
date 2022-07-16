@@ -43,6 +43,8 @@ group :development, :test do
 end
 
 group :development do
+  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+  gem "rack-mini-profiler", "3.0.0"
   # To ensure code consistency [https://docs.rubocop.org]
   gem "rubocop", "1.31.2"
   gem "rubocop-performance", "1.14.2"
