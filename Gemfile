@@ -27,6 +27,8 @@ gem "stimulus-rails", "1.0.4"
 gem "turbo-rails", "1.1.1"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", "2.0.4", platforms: %i[mingw mswin x64_mingw jruby]
+# A framework for building reusable, testable & encapsulated view components in Ruby on Rails [https://github.com/github/view_component]
+gem "view_component", "2.53.0"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
