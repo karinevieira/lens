@@ -11,6 +11,8 @@ gem "bootsnap", "1.12.0", require: false
 gem "cssbundling-rails", "1.1.1"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails", "1.0.3"
+# Lookbook provides UI for view component previews [https://github.com/allmarkedup/lookbook]
+gem "lookbook", "0.9.1"
 # Use postgresql as the database for Active Record
 gem "pg", "1.4.1"
 # Use the Puma web server [https://github.com/puma/puma]
