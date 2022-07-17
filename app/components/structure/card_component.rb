@@ -2,6 +2,7 @@
 
 module Structure
   class CardComponent < ViewComponent::Base
+    renders_one :image, "ImageComponent"
     renders_one :subtitle, "SubtitleComponent"
 
     def all_classes
@@ -12,6 +13,12 @@ module Structure
       def call
         classes = "mb-3 text-sm font-normal text-gray-700 dark:text-gray-400"
         content_tag :p, content, class: classes
+      end
+    end
+
+    class ImageComponent < ViewComponent::Base
+      def call
+        image_tag(content)
       end
     end
   end
