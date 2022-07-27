@@ -2,8 +2,13 @@
 
 module Form
   class InputComponentPreview < ViewComponent::Preview
-    def default
-      render Form::InputComponent.new(type: "text", id: "subtitle")
+    # @param label
+    # @param type
+    # @param id
+    def playground(label: nil, type: "text", id: nil)
+      render Form::InputComponent.new(type:, id:) do |input|
+        input.label { label }
+      end
     end
   end
 end

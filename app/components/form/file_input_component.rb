@@ -4,6 +4,8 @@ module Form
   class FileInputComponent < ViewComponent::Base
     attr_reader :html_options
 
+    renders_one :label, Form::LabelComponent
+
     def initialize(**html_options)
       @html_options = html_options
     end
