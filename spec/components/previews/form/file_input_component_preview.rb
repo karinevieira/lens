@@ -2,8 +2,11 @@
 
 module Form
   class FileInputComponentPreview < ViewComponent::Preview
-    def default
-      render Form::FileInputComponent.new
+    # @param content
+    def playground(content: nil)
+      render Form::FileInputComponent.new do |input|
+        input.label { content }
+      end
     end
   end
 end

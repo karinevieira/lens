@@ -4,8 +4,16 @@ module Form
   class InputComponent < ViewComponent::Base
     attr_reader :html_options
 
+    renders_one :label, ->(&block) { Form::LabelComponent.new(for: label_for, &block) }
+
     def initialize(**html_options)
       @html_options = html_options
+    end
+
+    private
+
+    def label_for
+      html_options[:id]
     end
 
     def all_classes
