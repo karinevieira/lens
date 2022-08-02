@@ -13,7 +13,7 @@ module Form
     private
 
     def container_classes
-      "flex justify-center items-center w-full"
+      "flex justify-center items-center w-full mb-6"
     end
 
     def label_classes
