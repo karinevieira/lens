@@ -3,5 +3,7 @@
 require "view_component/test_helpers"
 
 RSpec.configure do |config|
-  config.include ViewComponent::TestHelpers, type: :component
+  %i[component page].each do |type|
+    config.include ViewComponent::TestHelpers, type: type
+  end
 end
