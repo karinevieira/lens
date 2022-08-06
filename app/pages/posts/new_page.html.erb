@@ -1,0 +1,12 @@
+<%# meta_tags %>
+
+<%= render(Form::LayoutComponent.new) do |layout| %>
+  <% layout.header { "New post" } %>
+  <%= render(Form::FileInputComponent.new) do |input| %>
+    <% input.label { "Upload file" } %>
+  <% end %>
+  <%= render(Form::InputComponent.new(type: "text", id: "subtitle")) do |input| %>
+    <% input.label { "Your subtitle" } %>
+  <% end %>
+  <%= render(Action::ButtonComponent.new) { "Create post" } %>
+<% end %>
