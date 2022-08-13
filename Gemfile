@@ -9,6 +9,8 @@ ruby "3.1.2"
 gem "bootsnap", "1.12.0", require: false
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem "cssbundling-rails", "1.1.1"
+# High-level image processing wrapper for libvips and ImageMagick/GraphicsMagick [https://github.com/janko/image_processing]
+gem "image_processing", "1.12.2"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails", "1.0.3"
 # Lookbook provides UI for view component previews [https://github.com/allmarkedup/lookbook]
