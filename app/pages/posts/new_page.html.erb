@@ -4,6 +4,10 @@
 
 <%= form_with(model: post) do |f| %>
   <div class="field">
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
     <%= f.text_field :subtitle %>
   </div>
 
