@@ -49,6 +49,8 @@ group :development, :test do
 end
 
 group :development do
+  # Linter to ERB or HTML files [https://github.com/Shopify/erb-lint]
+  gem "erb_lint", "0.1.3", require: false
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   gem "rack-mini-profiler", "3.0.0"
   # To ensure code consistency [https://docs.rubocop.org]
