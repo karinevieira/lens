@@ -2,7 +2,7 @@
   <% layout.header { "Novo post" } %>
 
   <%= render(Form::FileInputComponent.new) do |input| %>
-    <% input.label { "Upload file" }%>
+    <% input.label { "Upload file" } %>
   <% end %>
 
   <%= render(Form::InputComponent.new(type: "text", id: "subtitle")) do |input| %>
