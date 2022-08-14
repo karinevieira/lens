@@ -1,6 +1,6 @@
 <%= label %>
 <%= content_tag :div, class: container_classes do %>
-  <%= label_tag "dropzone-file", class: label_classes do %>
+  <%= label_tag html_options[:id], class: label_classes do %>
     <%= content_tag :div, class: div_classes do %>
       <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
@@ -10,6 +10,6 @@
       <%= content_tag :p, "Click to upload or drag and drop", class: p_classes %>
     <% end %>
 
-    <%= tag.input(type: "file", id: "dropzone-file", class: file_input_class) %>
+    <%= tag.input(type: "file", class: file_input_class, **html_options) %>
   <% end %>
 <% end %>

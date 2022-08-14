@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FormBuilder < ActionView::Helpers::FormBuilder
+class ComponentBuilder < ActionView::Helpers::FormBuilder
   attr_reader :template
 
   delegate :render, to: :template
@@ -12,6 +12,7 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def file_field_component(attribute, **args)
+    self.multipart = true
     render Form::FileInputComponent.new(**html_options(attribute), **args) do |slot|
       yield slot if block_given?
     end
