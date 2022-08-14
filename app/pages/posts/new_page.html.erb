@@ -1,17 +1,17 @@
 <%# meta_tags %>
 
-<h2>New Post</h2>
+<%= form_for(post, builder: ComponentBuilder) do |f| %>
+  <%= render(Form::LayoutComponent.new) do |layout| %>
+    <% layout.header { "New post" } %>
 
-<%= form_with(model: post) do |f| %>
-  <div class="field">
-    <%= f.file_field :image %>
-  </div>
+    <%= f.file_field_component :image do |slot| %>
+      <% slot.label { "Upload file" } %>
+    <% end %>
 
-  <div class="field">
-    <%= f.text_field :subtitle %>
-  </div>
+    <%= f.text_field_component(:subtitle, type: "text", id: "subtitle") do |input| %>
+      <% input.label { "Your subtitle" } %>
+    <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.button_component("Create post") %>
+  <% end %>
 <% end %>

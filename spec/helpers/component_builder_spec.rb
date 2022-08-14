@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe FormBuilder do
+RSpec.describe ComponentBuilder do
   describe "#text_field_component" do
     it "renders without problems" do
       builder = described_class.new(:post, Post.new, self, {})
