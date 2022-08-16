@@ -6,9 +6,11 @@
   </div>
 </div>
 
-<% posts.each do |post| %>
-  <%= render Structure::CardComponent.new do |card| %>
-    <% card.image { url_for(post.image) } if post.image.attached? %>
-    <% card.subtitle { post.subtitle } %>
+<div class="grid grid-cols-1 gap-4 justify-items-center">
+  <% posts.each do |post| %>
+    <%= render Structure::CardComponent.new do |card| %>
+      <% card.image { url_for(post.image) } if post.image.attached? %>
+      <% card.subtitle { post.subtitle } %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
