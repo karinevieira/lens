@@ -3,6 +3,14 @@
 require "rails_helper"
 
 RSpec.describe "Posts", type: :request do
+  describe "GET /index" do
+    it "returns http status ok" do
+      get posts_path
+
+      expect(response).to have_http_status :ok
+    end
+  end
+
   describe "GET /new" do
     it "returns http status ok" do
       get new_post_path
