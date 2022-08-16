@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  def index
+    posts = Post.all
+
+    respond_to do |format|
+      format.html { render Posts::IndexPage.new(posts: posts) }
+    end
+  end
+
   def new
     respond_to do |format|
       format.html { render Posts::NewPage.new(post: Post.new) }

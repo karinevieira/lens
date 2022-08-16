@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: "posts#new"
+  root to: "posts#index"
 
-  resources :posts, only: %i[new create]
+  resources :posts, only: %i[index new create]
 
   mount Lookbook::Engine, at: "lookbook"
 end
