@@ -2,10 +2,10 @@
 
 class PostsController < ApplicationController
   def index
-    posts = Post.all
+    result = Posts::List.result
 
     respond_to do |format|
-      format.html { render Posts::IndexPage.new(posts: posts) }
+      format.html { render Posts::IndexPage.new(posts: result.posts) }
     end
   end
 
