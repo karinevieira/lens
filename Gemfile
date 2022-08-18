@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+# Simple validations for Active Storage [https://github.com/igorkasyanchuk/active_storage_validations]
+gem "active_storage_validations", "0.9.8"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", "1.12.0", require: false
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
