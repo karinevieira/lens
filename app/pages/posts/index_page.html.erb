@@ -11,6 +11,7 @@
     <%= render Structure::CardComponent.new do |card| %>
       <% card.image { url_for(post.image) } if post.image.attached? %>
       <% card.subtitle { post.subtitle } %>
+      <% card.action(href: edit_post_path(post)) { "Editar" } %>
     <% end %>
   <% end %>
 </div>
