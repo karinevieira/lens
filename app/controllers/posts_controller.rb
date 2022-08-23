@@ -29,6 +29,28 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    result = Posts::Find.result(id: params[:id])
+
+    respond_to do |format|
+      format.html { render Posts::EditPage.new(post: result.post) }
+    end
+  end
+
+  def update
+    result = Posts::Update.result(attributes: post_params, id: params[:id])
+
+    respond_to do |format|
+      if result.success?
+        format.html { redirect_to root_path }
+      else
+        format.html do
+          render Posts::EditPage.new(post: result.post), status: :unprocessable_entity
+        end
+      end
+    end
+  end
+
   private
 
   def post_params
