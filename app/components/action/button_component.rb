@@ -5,12 +5,9 @@ module Action
     attr_reader :color, :tag, :href, :html_options
 
     COLOR_CLASSES = {
-      blue: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
-      font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600
-      dark:hover:bg-blue-700 dark:focus:ring-blue-800".squish,
-      white: "text-gray-900 font-medium rounded-lg text-sm dark:bg-gray-800
-      dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600
-      dark:focus:ring-gray-700".squish
+      blue: "bg-blue-600 hover:bg-blue-800",
+      green: "bg-green-600 hover:bg-green-800",
+      red: "bg-red-600 hover:bg-red-800"
     }.freeze
 
     def initialize(color: :blue, tag: :button, href: nil, **html_options)
@@ -27,11 +24,15 @@ module Action
     end
 
     def link_tag?
-      tag == :link
+      tag == :a
+    end
+
+    def base_classes
+      "focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center text-white"
     end
 
     def all_classes
-      COLOR_CLASSES[color]
+      [COLOR_CLASSES[color], base_classes]
     end
   end
 end
