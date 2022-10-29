@@ -10,19 +10,24 @@ module Action
 
     # @label Link tag
     def with_link_tag
-      render(Action::ButtonComponent.new(tag: :link, href: "http://localhost:3000")) { "Go to home" }
+      render(Action::ButtonComponent.new(tag: :a, href: "http://localhost:3000")) { "Edit post" }
     end
     # @!endgroup
 
     # @!group Colors
     # @label Blue
     def with_blue_color
-      render(Action::ButtonComponent.new) { "Create post" }
+      render(Action::ButtonComponent.new(color: :blue)) { "Create post" }
     end
 
-    # @label White
+    # @label Green
     def with_white_color
-      render(Action::ButtonComponent.new(color: :white, tag: :link, href: "http://localhost:3000")) { "Edit post" }
+      render(Action::ButtonComponent.new(color: :green)) { "Edit post" }
+    end
+
+    # @label Red
+    def with_red_color
+      render(Action::ButtonComponent.new(color: :red)) { "Destroy post" }
     end
     # @!endgroup
   end
