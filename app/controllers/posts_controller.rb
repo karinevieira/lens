@@ -51,6 +51,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    result = Posts::Destroy.result(id: params[:id])
+
+    respond_to do |format|
+      if result.success?
+        format.html { redirect_to root_path }
+      else
+        format.html { redirect_to root_path, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   def post_params
