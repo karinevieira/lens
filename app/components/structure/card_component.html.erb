@@ -3,7 +3,9 @@
   <%= content_tag :div, class: "p-5" do %>
     <% if subtitle? %>
       <%= subtitle %>
-      <%= action %>
+      <% actions.each do |action| %>
+        <%= action %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

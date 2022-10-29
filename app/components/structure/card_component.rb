@@ -4,7 +4,7 @@ module Structure
   class CardComponent < ViewComponent::Base
     renders_one :image, "ImageComponent"
     renders_one :subtitle, "SubtitleComponent"
-    renders_one :action, "ActionComponent"
+    renders_many :actions, "ActionComponent"
 
     def all_classes
       "max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
@@ -24,14 +24,15 @@ module Structure
     end
 
     class ActionComponent < ViewComponent::Base
-      attr_reader :href
+      attr_reader :href, :html_options
 
-      def initialize(href:)
+      def initialize(href:, **html_options)
         @href = href
+        @html_options = html_options
       end
 
       def call
-        link_to content, href, class: "text-sm font-normal text-blue-600 hover:underline"
+        link_to content, href, class: "text-sm font-normal text-blue-600 hover:underline", **html_options
       end
 
       private

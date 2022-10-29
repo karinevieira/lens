@@ -12,6 +12,7 @@
       <% card.image { url_for(post.image) } if post.image.attached? %>
       <% card.subtitle { post.subtitle } %>
       <% card.action(href: edit_post_path(post)) { "Editar" } %>
+      <% card.action(href: post_path(post), data: { turbo_method: :delete }) { "Excluir" } %>
     <% end %>
   <% end %>
 </div>
