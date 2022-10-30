@@ -2,7 +2,7 @@
 
 module Action
   class LinkComponent < ViewComponent::Base
-    attr_reader :href, :color
+    attr_reader :href, :color, :html_options
 
     COLOR_CLASS = {
       blue: "text-blue-600",
@@ -10,9 +10,10 @@ module Action
       red: "text-red-600"
     }.freeze
 
-    def initialize(href:, color: :blue)
+    def initialize(href:, color: :blue, **html_options)
       @href = href
       @color = color
+      @html_options = html_options
     end
 
     private
