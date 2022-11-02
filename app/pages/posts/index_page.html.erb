@@ -7,12 +7,5 @@
 </div>
 
 <div class="grid grid-cols-1 gap-4 justify-items-center">
-  <% posts.each do |post| %>
-    <%= render Structure::CardComponent.new do |card| %>
-      <% card.image { url_for(post.image) } if post.image.attached? %>
-      <% card.subtitle { post.subtitle } %>
-      <% card.action(href: edit_post_path(post)) { "Editar" } %>
-      <% card.action(color: :red, href: post_path(post), data: { turbo_method: :delete }) { "Excluir" } %>
-    <% end %>
-  <% end %>
+  <%= render Structure::CardComponent.with_collection(posts) %>
 </div>

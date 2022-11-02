@@ -2,25 +2,32 @@
 
 module Structure
   class CardComponent < ViewComponent::Base
-    renders_one :image, "ImageComponent"
-    renders_one :subtitle, "SubtitleComponent"
-    renders_many :actions, Action::LinkComponent
+    attr_reader :post
 
-    def all_classes
-      "max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+    with_collection_parameter :post
+
+    def initialize(post:)
+      @post = post
     end
 
-    class SubtitleComponent < ViewComponent::Base
-      def call
-        classes = "mb-3 text-base font-normal text-gray-700 dark:text-gray-400"
-        content_tag :p, content, class: classes
-      end
+    private
+
+    def image
+      image_tag(url_for(post.image)) if post.image.attached?
     end
 
-    class ImageComponent < ViewComponent::Base
-      def call
-        image_tag(content)
-      end
+    def edit_action
+      render(Action::LinkComponent.new(href: edit_post_path(post))) { "Editar" }
+    end
+
+    def delete_action
+      render(
+        Action::LinkComponent.new(
+          color: :red,
+          href: post_path(post),
+          data: { turbo_method: :delete }
+        )
+      ) { "Deletar" }
     end
   end
 end

@@ -1,11 +1,13 @@
-<%= content_tag :div, class: all_classes do %>
+<div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
   <%= image %>
-  <%= content_tag :div, class: "p-5" do %>
-    <% if subtitle? %>
-      <%= subtitle %>
-      <% actions.each do |action| %>
-        <%= action %>
-      <% end %>
+
+  <div class="p-5">
+    <% if post.subtitle.present? %>
+      <p class="mb-3 text-base font-normal text-gray-700">
+        <%= post.subtitle %>
+      </p>
+      <%= edit_action %>
+      <%= delete_action %>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+</div>
