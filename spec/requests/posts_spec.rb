@@ -7,7 +7,7 @@ RSpec.describe "Posts", type: :request do
     it "returns http status ok" do
       get posts_path
 
-      expect(response).to have_http_status :ok
+      expect(response).to have_http_status :found
     end
   end
 
@@ -15,7 +15,7 @@ RSpec.describe "Posts", type: :request do
     it "returns http status ok" do
       get new_post_path
 
-      expect(response).to have_http_status :ok
+      expect(response).to have_http_status :found
     end
   end
 
