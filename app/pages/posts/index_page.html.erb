@@ -1,11 +1,5 @@
-<div class="flex flex-row gap-6 border-t border-gray-100 py-6">
-  <div class="flex flex-1 justify-end">
-    <div class="flex flex-row gap-3">
-      <%= render(Action::ButtonComponent.new(tag: :a, href: new_post_path)) { "New post" } %>
-    </div>
-  </div>
-</div>
-
-<div class="grid grid-cols-1 gap-4 justify-items-center">
+<div class="grid grid-cols-1 gap-4 justify-items-center mt-6 bg-gray-50">
   <%= render Structure::CardComponent.with_collection(posts) %>
 </div>
+
+<%= render Application::NavbarComponent.new %>
