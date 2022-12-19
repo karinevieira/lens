@@ -1,29 +1,36 @@
-<h2>Sign up</h2>
+<div class="flex flex-col items-center justify-center w-screen bg-gray-50">
+  <div class="w-1/2 md:w-1/4 bg-white border border-gray-200 rounded-lg shadow-md p-4 my-8">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), builder: ComponentBuilder) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="my-6">
+        <h1 class="text-gray-900 font-semibold text-center">Sign up</h1>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="mb-6">
+        <%= f.text_field_component(:email, type: "email", id: "email") do |input| %>
+          <% input.label { "Email" } %>
+        <% end %>
+      </div>
+
+      <div class="mb-6">
+        <%= f.text_field_component(:password, type: "password", id: "password") do |input| %>
+          <% input.label { "Password" } %>
+        <% end %>
+      </div>
+
+      <div class="mb-6">
+        <%= f.text_field_component(:password_confirmation, type: "password", id: "password_confirmation") do |input| %>
+          <% input.label { "Password confirmation" } %>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= f.button_component("Sign up") %>
+      </div>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br>
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div>
+    <%= render(Action::LinkComponent.new(color: :blue, href: user_session_path)) { "Sign in" } %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
