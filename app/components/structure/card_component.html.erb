@@ -3,11 +3,13 @@
 
   <div class="p-5">
     <% if post.subtitle.present? %>
-      <p class="mb-3 text-base font-normal text-gray-700">
-        <%= post.subtitle %>
-      </p>
-      <%= edit_action %>
-      <%= delete_action %>
+      <%= turbo_frame_tag post do %>
+        <p class="mb-3 text-base font-normal text-gray-700">
+          <%= post.subtitle %>
+        </p>
+        <%= edit_action %>
+        <%= delete_action %>
+      <% end %>
     <% end %>
   </div>
 </div>

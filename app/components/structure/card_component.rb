@@ -25,7 +25,7 @@ module Structure
         Action::LinkComponent.new(
           color: :red,
           href: post_path(post),
-          data: { turbo_method: :delete }
+          data: { turbo_method: :delete, turbo_frame: "_top" }
         )
       ) { "Deletar" }
     end
