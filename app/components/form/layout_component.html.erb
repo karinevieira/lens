@@ -1,4 +1,6 @@
 <%= content_tag :div do %>
-  <%= header %>
+  <% if header? %>
+    <%= header %>
+  <% end %>
   <%= content %>
 <% end %>
