@@ -1,14 +1,16 @@
 <%# meta_tags %>
 
-<%= form_for(post, builder: ComponentBuilder) do |f| %>
-  <%= render(Form::LayoutComponent.new) do |layout| %>
-    <% layout.header { "Edit post" } %>
+<%= turbo_frame_tag post do %>
+  <%= form_for(post, builder: ComponentBuilder) do |f| %>
+    <%= render(Form::LayoutComponent.new) do |layout| %>
+      <% layout.header { "Edit post" } %>
 
-    <%= f.text_field_component(:subtitle, type: "text", id: "subtitle") do |input| %>
-      <% input.label { "Your subtitle" } %>
+      <%= f.text_field_component(:subtitle, type: "text", id: "subtitle") do |input| %>
+        <% input.label { "Your subtitle" } %>
+      <% end %>
+
+      <%= f.button_component("Edit post") %>
     <% end %>
-
-    <%= f.button_component("Edit post") %>
   <% end %>
 <% end %>
 
