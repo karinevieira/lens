@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :authorize_action!, only: %i[edit update destroy]
+
   def index
     result = Posts::List.result
 
@@ -30,10 +32,8 @@ class PostsController < ApplicationController
   end
 
   def edit
-    result = Posts::Find.result(id: params[:id])
-
     respond_to do |format|
-      format.html { render Posts::EditPage.new(post: result.post) }
+      format.html { render Posts::EditPage.new(post: post) }
     end
   end
 
@@ -67,5 +67,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:image, :subtitle).merge(user_id: current_user.id).to_h
+  end
+
+  def authorize_action!
+    authorize! post, with: PostPolicy
+  end
+
+  def post
+    @post ||= Posts::Find.result(id: params[:id]).post
   end
 end
