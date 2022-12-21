@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+# Authorization framework for Ruby/Rails applications [https://github.com/palkan/action_policy]
+gem "action_policy", "0.6.3"
 # Simple validations for Active Storage [https://github.com/igorkasyanchuk/active_storage_validations]
 gem "active_storage_validations", "0.9.8"
 # Reduces boot times through caching; required in config/boot.rb
