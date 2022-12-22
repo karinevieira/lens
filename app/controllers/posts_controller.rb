@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     result = Posts::List.result
 
     respond_to do |format|
-      format.html { render Posts::IndexPage.new(posts: result.posts) }
+      format.html { render Posts::IndexPage.new(posts: result.posts, user: current_user) }
     end
   end
 

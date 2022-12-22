@@ -2,12 +2,15 @@
 
 module Structure
   class CardComponent < ViewComponent::Base
-    attr_reader :post
+    include ActionPolicy::Behaviour
+
+    attr_reader :post, :user
 
     with_collection_parameter :post
 
-    def initialize(post:)
+    def initialize(post:, user:)
       @post = post
+      @user = user
     end
 
     private
@@ -28,6 +31,10 @@ module Structure
           data: { turbo_method: :delete, turbo_frame: "_top" }
         )
       ) { "Deletar" }
+    end
+
+    def show_action?(rule:)
+      allowed_to?(rule, post, context: { user: user })
     end
   end
 end
