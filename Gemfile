@@ -69,6 +69,8 @@ group :development do
 end
 
 group :test do
+  # Acceptance test framework for web applications [https://github.com/teamcapybara/capybara]
+  gem "capybara", "3.38.0"
   # Framework library to test our code [https://github.com/rspec/rspec-rails/]
   gem "rspec-rails", "5.1.2"
 end
