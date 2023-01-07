@@ -6,8 +6,8 @@ RSpec.describe Form::LabelComponent, type: :component do
   context "when content is present" do
     subject(:rendered) { render_inline(described_class.new) { "Label" } }
 
-    it "renders without problems" do
-      expect(rendered.to_html).to be_present
+    it "renders the label with content given" do
+      expect(rendered.to_html).to have_content("Label")
     end
   end
 
