@@ -7,5 +7,6 @@ RSpec.configure do |config|
   %i[component page].each do |type|
     config.include ViewComponent::TestHelpers, type: type
     config.include Capybara::RSpecMatchers, type: type
+    config.include Rails.application.routes.url_helpers
   end
 end

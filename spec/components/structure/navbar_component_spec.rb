@@ -3,9 +3,11 @@
 require "rails_helper"
 
 RSpec.describe Structure::NavbarComponent, type: :component do
-  it "renders without problemas" do
-    rendered = render_inline(described_class.new)
+  it "renders slot items" do
+    rendered = render_inline(described_class.new) do |nav|
+      nav.item(href: "#", title: "Test item")
+    end
 
-    expect(rendered.to_html).to be_present
+    expect(rendered.to_html).to have_link("Test item", href: "#")
   end
 end
