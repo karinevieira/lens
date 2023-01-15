@@ -1,5 +1,5 @@
 <div class="grid grid-cols-1 gap-4 justify-items-center my-10 bg-gray-50">
-  <%= render Structure::CardComponent.with_collection(posts) %>
+  <%= render Structure::CardComponent.with_collection(posts, user: user) %>
 </div>
 
 <%= render Application::NavbarComponent.new %>

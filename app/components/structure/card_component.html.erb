@@ -7,8 +7,14 @@
         <p class="mb-3 text-base font-normal text-gray-700">
           <%= post.subtitle %>
         </p>
-        <%= edit_action %>
-        <%= delete_action %>
+
+        <% if show_action?(rule: :edit?) %>
+          <%= edit_action %>
+        <% end %>
+
+        <% if show_action?(rule: :destroy?) %>
+          <%= delete_action %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
