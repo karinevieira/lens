@@ -11,6 +11,45 @@ RSpec.describe Structure::CardComponent, type: :component do
     expect(rendered.to_html).to have_css("img[src*='image.png']")
   end
 
+  context "when post has likes" do
+    it "renders the red heart" do
+      user = create(:user)
+      post = create(:post)
+      create(:like, user: user, post: post)
+      rendered = render_inline(described_class.new(post: post, user: user))
+
+      expect(rendered.to_html).to have_css("svg", class: "fill-red-500")
+    end
+  end
+
+  context "when post has no likes" do
+    it "renders the empty heart" do
+      user = build_stubbed(:user)
+      post = build_stubbed(:post, id: SecureRandom.uuid)
+      rendered = render_inline(described_class.new(post: post, user: user))
+
+      expect(rendered.to_html).to have_css("svg", class: "stroke-gray-600 fill-transparent")
+    end
+
+    it "renders a button to like the post" do
+      user = build_stubbed(:user)
+      post = build_stubbed(:post, id: SecureRandom.uuid)
+      rendered = render_inline(described_class.new(post: post, user: user))
+      form_action = post_likes_path(post)
+
+      expect(rendered.to_html).to have_css("form[action='#{form_action}']")
+    end
+  end
+
+  it "renders the amount of likes on the post" do
+    user = create(:user)
+    post = create(:post)
+    create(:like, user: user, post: post)
+    rendered = render_inline(described_class.new(post: post, user: user))
+
+    expect(rendered.to_html).to have_css("p", text: "1 Like")
+  end
+
   context "when subtitle is present" do
     it "renders the subtitle" do
       user = build_stubbed(:user)
@@ -27,7 +66,7 @@ RSpec.describe Structure::CardComponent, type: :component do
       post = build_stubbed(:post, id: SecureRandom.uuid, subtitle: nil)
       rendered = render_inline(described_class.new(post: post, user: user))
 
-      expect(rendered.to_html).not_to have_selector("p")
+      expect(rendered.to_html).not_to have_selector("turbo-frame")
     end
   end
 
