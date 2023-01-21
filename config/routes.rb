@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :posts
+  resources :posts do
+    resources :likes
+  end
 
   mount Lookbook::Engine, at: "lookbook"
 end

@@ -36,5 +36,9 @@ module Structure
     def show_action?(rule:)
       allowed_to?(rule, post, context: { user: user })
     end
+
+    def already_liked?
+      Like.exists?(user_id: user.id, post_id: post.id)
+    end
   end
 end
