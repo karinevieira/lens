@@ -20,6 +20,16 @@ RSpec.describe Structure::CardComponent, type: :component do
 
       expect(rendered.to_html).to have_css("svg", class: "fill-red-500")
     end
+
+    it "renders a button to dislike the post" do
+      user = create(:user)
+      post = create(:post)
+      like = create(:like, user: user, post: post)
+      rendered = render_inline(described_class.new(post: post, user: user))
+      form_action = post_like_path(post, like)
+
+      expect(rendered.to_html).to have_css("form[action='#{form_action}']")
+    end
   end
 
   context "when post has no likes" do

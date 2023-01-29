@@ -40,5 +40,9 @@ module Structure
     def already_liked?
       Like.exists?(user_id: user.id, post_id: post.id)
     end
+
+    def like
+      @like ||= Like.find_by(user_id: user.id, post_id: post.id)
+    end
   end
 end
