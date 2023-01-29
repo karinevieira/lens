@@ -42,7 +42,7 @@ module Structure
     end
 
     def like
-      @like ||= Like.find_by(user_id: user.id, post_id: post.id)
+      Likes::Find.result(user_id: user.id, post_id: post.id).like
     end
   end
 end

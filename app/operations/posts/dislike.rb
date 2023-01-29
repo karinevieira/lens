@@ -13,7 +13,7 @@ module Posts
     private
 
     def like
-      ::Like.find_by(user_id: user_id, post_id: post_id)
+      ::Likes::Find.result(user_id: user_id, post_id: post_id).like
     end
 
     def already_liked?
