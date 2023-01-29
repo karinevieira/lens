@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Posts
-  class Unlike < Actor
+  class Dislike < Actor
     input :post_id, type: String
     input :user_id, type: String
 
@@ -21,7 +21,7 @@ module Posts
     end
 
     def fail_transition!
-      fail!(error: :cannot_unlike)
+      fail!(error: :cannot_dislike)
     end
   end
 end

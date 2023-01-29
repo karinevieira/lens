@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Posts::Unlike, type: :operation do
+RSpec.describe Posts::Dislike, type: :operation do
   describe ".result" do
     context "when like can be destroyed" do
       it "is a success" do
@@ -36,7 +36,7 @@ RSpec.describe Posts::Unlike, type: :operation do
         expect(result.failure?).to be true
       end
 
-      it "raises cannot unlike error" do
+      it "raises cannot dislike error" do
         user = create(:user)
         post = create(:post)
         like = Like.new(post: post, user: user)
@@ -48,7 +48,7 @@ RSpec.describe Posts::Unlike, type: :operation do
 
         result = described_class.result(post_id: post.id, user_id: user.id)
 
-        expect(result.error).to be :cannot_unlike
+        expect(result.error).to be :cannot_dislike
       end
     end
   end
