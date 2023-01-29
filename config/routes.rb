@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :posts do
-    resources :likes
+    resources :likes, only: %i[create destroy]
   end
 
   mount Lookbook::Engine, at: "lookbook"
