@@ -44,5 +44,13 @@ module Structure
     def like
       Likes::Find.result(user_id: user.id, post_id: post.id).like
     end
+
+    def likes_count_text
+      post.likes.count == 1 ? "Like" : "Likes"
+    end
+
+    def show_likes_count
+      "#{post.likes.count} #{likes_count_text}"
+    end
   end
 end
