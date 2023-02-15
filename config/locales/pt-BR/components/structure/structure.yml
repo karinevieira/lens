@@ -1,0 +1,8 @@
+pt-BR:
+  structure:
+    card_component:
+      edit: Editar
+      delete: Deletar
+      likes_count:
+        one: "%{count} Like"
+        other: "%{count} Likes"

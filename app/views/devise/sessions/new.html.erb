@@ -2,28 +2,30 @@
   <div class="w-1/2 md:w-1/4 bg-white border border-gray-200 rounded-lg shadow-md p-4 my-8">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), builder: ComponentBuilder) do |f| %>
       <div class="my-6">
-        <h1 class="text-gray-900 font-semibold text-center">Log in</h1>
+        <h1 class="text-gray-900 font-semibold text-center">
+          <%= t(".page_title") %>
+        </h1>
       </div>
 
       <div class="mb-6">
         <%= f.text_field_component(:email, type: "email", id: "email") do |input| %>
-          <% input.label { "Email" } %>
+          <% input.label { t(".email") } %>
         <% end %>
       </div>
 
       <div class="mb-6">
         <%= f.text_field_component(:password, type: "password", id: "password") do |input| %>
-          <% input.label { "Password" } %>
+          <% input.label { t(".password") } %>
         <% end %>
       </div>
 
       <div class="actions">
-        <%= f.button_component("Log in") %>
+        <%= f.button_component t(".sign_in") %>
       </div>
     <% end %>
   </div>
 
   <div>
-    <%= render(Action::LinkComponent.new(color: :blue, href: new_user_registration_path)) { "Sign up" } %>
+    <%= render(Action::LinkComponent.new(color: :blue, href: new_user_registration_path)) { t(".sign_up") } %>
   </div>
 </div>

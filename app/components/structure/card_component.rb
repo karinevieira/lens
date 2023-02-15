@@ -20,7 +20,7 @@ module Structure
     end
 
     def edit_action
-      render(Action::LinkComponent.new(href: edit_post_path(post))) { "Editar" }
+      render(Action::LinkComponent.new(href: edit_post_path(post))) { t("structure.card_component.edit") }
     end
 
     def delete_action
@@ -30,7 +30,7 @@ module Structure
           href: post_path(post),
           data: { turbo_method: :delete, turbo_frame: "_top" }
         )
-      ) { "Deletar" }
+      ) { t("structure.card_component.delete") }
     end
 
     def show_action?(rule:)
@@ -46,11 +46,7 @@ module Structure
     end
 
     def likes_count_text
-      post.likes.count == 1 ? "Like" : "Likes"
-    end
-
-    def show_likes_count
-      "#{post.likes.count} #{likes_count_text}"
+      t("structure.card_component.likes_count", count: post.likes.count)
     end
   end
 end
