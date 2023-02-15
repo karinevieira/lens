@@ -2,17 +2,17 @@
 
 <%= form_for(post, builder: ComponentBuilder) do |f| %>
   <%= render(Form::LayoutComponent.new) do |layout| %>
-    <% layout.header { "New post" } %>
+    <% layout.header { t("posts.new_page.new_post") } %>
 
     <%= f.file_field_component :image do |slot| %>
-      <% slot.label { "Upload file" } %>
+      <% slot.label { t("posts.new_page.image") } %>
     <% end %>
 
     <%= f.text_field_component(:subtitle, type: "text", id: "subtitle") do |input| %>
-      <% input.label { "Your subtitle" } %>
+      <% input.label { t("posts.new_page.subtitle") } %>
     <% end %>
 
-    <%= f.button_component("Create post") %>
+    <%= f.button_component t("posts.new_page.create_post") %>
   <% end %>
 <% end %>
 

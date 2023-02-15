@@ -1,0 +1,8 @@
+pt-BR:
+  application:
+    navbar_component:
+      home: Início
+      search: Buscar
+      new: Novo post
+      profile: Perfil
+      sign_out: Sair

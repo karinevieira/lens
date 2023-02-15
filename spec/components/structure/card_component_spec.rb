@@ -56,8 +56,9 @@ RSpec.describe Structure::CardComponent, type: :component do
     post = create(:post)
     create(:like, user: user, post: post)
     rendered = render_inline(described_class.new(post: post, user: user))
+    likes_count = I18n.t("structure.card_component.likes_count", count: post.likes.count)
 
-    expect(rendered.to_html).to have_css("p", text: "1 Like")
+    expect(rendered.to_html).to have_css("p", text: likes_count)
   end
 
   context "when subtitle is present" do
@@ -90,7 +91,9 @@ RSpec.describe Structure::CardComponent, type: :component do
       allow(component).to receive(:allowed_to?).with(:destroy?, post, context: { user: user }).and_return(true)
 
       rendered = render_inline(component)
-      expect(rendered.to_html).to have_link("Editar", href: edit_post_path(post))
+      link_text = I18n.t("structure.card_component.edit")
+
+      expect(rendered.to_html).to have_link(link_text, href: edit_post_path(post))
     end
 
     it "renders a link to delete the post" do
@@ -102,8 +105,9 @@ RSpec.describe Structure::CardComponent, type: :component do
       allow(component).to receive(:allowed_to?).with(:destroy?, post, context: { user: user }).and_return(true)
 
       rendered = render_inline(component)
+      link_text = I18n.t("structure.card_component.delete")
 
-      expect(rendered.to_html).to have_link("Deletar", href: post_path(post))
+      expect(rendered.to_html).to have_link(link_text, href: post_path(post))
     end
   end
 
@@ -117,8 +121,9 @@ RSpec.describe Structure::CardComponent, type: :component do
       allow(component).to receive(:allowed_to?).with(:destroy?, post, context: { user: user }).and_return(false)
 
       rendered = render_inline(component)
+      link_text = I18n.t("structure.card_component.edit")
 
-      expect(rendered.to_html).not_to have_link("Editar", href: edit_post_path(post))
+      expect(rendered.to_html).not_to have_link(link_text, href: edit_post_path(post))
     end
 
     it "doesn't render a link to delete the post" do
@@ -130,8 +135,9 @@ RSpec.describe Structure::CardComponent, type: :component do
       allow(component).to receive(:allowed_to?).with(:destroy?, post, context: { user: user }).and_return(false)
 
       rendered = render_inline(component)
+      link_text = I18n.t("structure.card_component.delete")
 
-      expect(rendered.to_html).not_to have_link("Deletar", href: post_path(post))
+      expect(rendered.to_html).not_to have_link(link_text, href: post_path(post))
     end
   end
 end
