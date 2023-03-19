@@ -1,19 +1,20 @@
 <%# meta_tags %>
+<div class="m-12">
+  <%= form_for(post, builder: ComponentBuilder) do |f| %>
+    <%= render(Form::LayoutComponent.new) do |layout| %>
+      <% layout.header { t("posts.new_page.new_post") } %>
 
-<%= form_for(post, builder: ComponentBuilder) do |f| %>
-  <%= render(Form::LayoutComponent.new) do |layout| %>
-    <% layout.header { t("posts.new_page.new_post") } %>
+      <%= f.file_field_component :image do |slot| %>
+        <% slot.label { t("posts.new_page.image") } %>
+      <% end %>
 
-    <%= f.file_field_component :image do |slot| %>
-      <% slot.label { t("posts.new_page.image") } %>
+      <%= f.text_field_component(:subtitle, type: "text", id: "subtitle") do |input| %>
+        <% input.label { t("posts.new_page.subtitle") } %>
+      <% end %>
+
+      <%= f.button_component t("posts.new_page.create_post") %>
     <% end %>
-
-    <%= f.text_field_component(:subtitle, type: "text", id: "subtitle") do |input| %>
-      <% input.label { t("posts.new_page.subtitle") } %>
-    <% end %>
-
-    <%= f.button_component t("posts.new_page.create_post") %>
   <% end %>
-<% end %>
 
-<%= render Application::NavbarComponent.new %>
+  <%= render Application::NavbarComponent.new %>
+</div>
