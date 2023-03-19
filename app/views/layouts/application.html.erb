@@ -11,6 +11,8 @@
   </head>
 
   <body>
+    <%= render Application::FlashMessageComponent.new(flash: flash) %>
+
     <%= yield %>
   </body>
 </html>
