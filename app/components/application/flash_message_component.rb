@@ -17,7 +17,7 @@ module Application
     def flash_message
       type, message = flash.first
 
-      render(Feedback::BannerComponent.new(type: type)) { message }
+      render(Feedback::BannerComponent.new(type: type.to_sym)) { message }
     end
   end
 end
