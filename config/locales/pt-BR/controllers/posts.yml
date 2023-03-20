@@ -1,0 +1,9 @@
+pt-BR:
+  posts:
+    create:
+      notice: Publicação criada com sucesso
+    update:
+      notice: Publicação atualizada com sucesso
+    destroy:
+      notice: Publicação excluída com sucesso
+      alert: Houve um erro ao excluir publicação

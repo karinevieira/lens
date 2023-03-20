@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if result.success?
-        format.html { redirect_to root_path }
+        format.html { redirect_to root_path, notice: t(".notice") }
       else
         format.html do
           render Posts::NewPage.new(post: result.post), status: :unprocessable_entity
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if result.success?
-        format.html { redirect_to root_path }
+        format.html { redirect_to root_path, notice: t(".notice") }
       else
         format.html do
           render Posts::EditPage.new(post: result.post), status: :unprocessable_entity
@@ -56,9 +56,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if result.success?
-        format.html { redirect_to root_path }
+        format.html { redirect_to root_path, notice: t(".notice") }
       else
-        format.html { redirect_to root_path, status: :unprocessable_entity }
+        format.html { redirect_to root_path, alert: t(".alert"), status: :unprocessable_entity }
       end
     end
   end
