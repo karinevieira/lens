@@ -1,0 +1,23 @@
+services:
+  # Main application database
+  db:
+    image: postgres:14.3-alpine
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 123
+      POSTGRES_USER: postgres
+      POSTGRES_DB: lens_development
+
+  # Redis is an open source (BSD licensed) in-memory data structure store
+  redis:
+    image: redis
+    command: redis-server --requirepass Redis2023!
+    ports:
+      - "6379:6379"
+
+volumes:
+  db-data:
+    driver: local
