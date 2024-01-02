@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.2"
+ruby "3.2.2"
 
 # Authorization framework for Ruby/Rails applications [https://github.com/palkan/action_policy]
 gem "action_policy", "0.6.3"
