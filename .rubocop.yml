@@ -2,12 +2,20 @@ require:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-capybara
+  - rubocop-factory_bot
 
 AllCops:
   NewCops: enable
 
 Bundler/OrderedGems:
   TreatCommentsAsGroupSeparators: false
+
+FactoryBot/AssociationStyle:
+  Enabled: false
+
+FactoryBot/AttributeDefinedStatically:
+  Enabled: false
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation

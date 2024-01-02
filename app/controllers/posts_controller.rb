@@ -17,6 +17,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    respond_to do |format|
+      format.html { render Posts::EditPage.new(post: post) }
+    end
+  end
+
   def create
     result = Posts::Create.result(attributes: post_params)
 
@@ -28,12 +34,6 @@ class PostsController < ApplicationController
           render Posts::NewPage.new(post: result.post), status: :unprocessable_entity
         end
       end
-    end
-  end
-
-  def edit
-    respond_to do |format|
-      format.html { render Posts::EditPage.new(post: post) }
     end
   end
 

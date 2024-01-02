@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Posts", type: :request do
+RSpec.describe "Posts" do
   describe "GET /index" do
     it "returns http status ok" do
       get posts_path
