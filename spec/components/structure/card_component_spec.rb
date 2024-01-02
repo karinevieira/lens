@@ -77,7 +77,7 @@ RSpec.describe Structure::CardComponent, type: :component do
       post = build_stubbed(:post, id: SecureRandom.uuid, subtitle: nil)
       rendered = render_inline(described_class.new(post: post, user: user))
 
-      expect(rendered.to_html).not_to have_selector("turbo-frame")
+      expect(rendered.to_html).not_to have_css("turbo-frame")
     end
   end
 
