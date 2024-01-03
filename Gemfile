@@ -73,4 +73,8 @@ group :test do
   gem "capybara", "3.39.2"
   # Framework library to test our code [https://github.com/rspec/rspec-rails/]
   gem "rspec-rails", "5.1.2"
+  # Limited DevTools interactions for Selenium WebDriver [https://rubygems.org/gems/selenium-devtools]
+  gem "selenium-devtools", "0.120.0"
+  # A browser automation framework and ecosystem [https://github.com/SeleniumHQ/selenium]
+  gem "selenium-webdriver", "4.16.0"
 end
