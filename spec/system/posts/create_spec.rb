@@ -9,10 +9,10 @@ RSpec.describe "Create post" do
 
       visit root_path
 
-      click_link(I18n.t("application.navbar_component.new"))
+      click_on(I18n.t("application.navbar_component.new"))
       attach_file("post_image", Rails.root.join("spec/fixtures/files/image.png"), make_visible: true)
       fill_in I18n.t("posts.new_page.subtitle"), with: "test subtitle"
-      click_button(I18n.t("posts.new_page.create_post"))
+      click_link_or_button(I18n.t("posts.new_page.create_post"))
 
       expect(page).to have_text("test subtitle")
         .and have_css("img[src*='image.png']")
