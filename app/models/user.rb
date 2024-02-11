@@ -6,5 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
+  has_one :profile, class_name: "UserProfile", dependent: :destroy
+
   has_many :likes, dependent: :destroy
 end

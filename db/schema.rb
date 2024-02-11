@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_16_174527) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_11_200157) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -60,6 +61,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_174527) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "user_profiles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.citext "username", null: false
+    t.text "display_name", null: false
+    t.text "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
+    t.index ["username"], name: "index_user_profiles_on_username", unique: true
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -77,4 +89,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_174527) do
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "user_profiles", "users"
 end
