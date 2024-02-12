@@ -9,7 +9,22 @@
       </div>
 
       <div class="mb-6">
-        <%= f.text_field_component(:email, type: "email", id: "email") do |input| %>
+        <%= f.fields_for :profile, resource.build_profile do |profile_fields| %>
+          <div class="mb-6">
+            <%= profile_fields.text_field_component(:display_name, type: "display_name", id: "display_name", placeholder: "Jane Doe") do |input| %>
+              <% input.label { t(".display_name") } %>
+            <% end %>
+          <div>
+          <div class="mb-6">
+            <%= profile_fields.text_field_component(:username, type: "username", id: "username", placeholder: "janedoe") do |input| %>
+              <% input.label { t(".username") } %>
+            <% end %>
+          <div>
+        <% end %>
+      <div>
+
+      <div class="mb-6">
+        <%= f.text_field_component(:email, type: "email", id: "email", placeholder: "janedoe@email.com") do |input| %>
           <% input.label { t(".email") } %>
         <% end %>
       </div>
