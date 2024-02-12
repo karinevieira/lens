@@ -10,7 +10,8 @@ pt-BR:
       new:
         page_title: Crie sua conta
         submit: Criar conta
-        name: Nome
+        display_name: Nome
+        username: Usuário
         email: E-mail
         password: Senha
         password_confirmation: Confirmação da senha

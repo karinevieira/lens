@@ -9,4 +9,8 @@ class User < ApplicationRecord
   has_one :profile, class_name: "UserProfile", dependent: :destroy
 
   has_many :likes, dependent: :destroy
+
+  accepts_nested_attributes_for :profile, update_only: true
+
+  validates :profile, presence: true
 end
