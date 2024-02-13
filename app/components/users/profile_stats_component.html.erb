@@ -1,0 +1,8 @@
+<div class="mt-4 flex flex-wrap justify-between gap-4">
+  <% stats.each do |stat| %>
+    <div class="text-center">
+      <span class="font-bold"><%= stat[:title] %></span>
+      <span class="block"><%= stat[:count] %></span>
+    </div>
+  <% end %>
+</div>
