@@ -59,4 +59,7 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  # To remove ruby vips warnings
+  config.active_storage.variant_processor = :mini_magick
 end

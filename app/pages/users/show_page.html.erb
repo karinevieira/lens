@@ -1,0 +1,19 @@
+<div class="container mx-auto flex justify-center items-center mt-8">
+  <div class="bg-white p-4 sm:w-1/2 md:w-1/3 lg:w-1/4">
+    <%= render Users::AvatarComponent.new(image_url: "https://i.pravatar.cc/150?img=3") %>
+
+    <h1 class="text-xl font-bold text-center"><%= user.profile.display_name %></h1>
+    <p class="text-gray-600 text-center">@<%= user.profile.username %></p>
+    <p class="text-gray-700 text-center mt-4"><%= user.profile.bio %></p>
+
+    <%= render Users::ProfileStatsComponent.new(
+      stats: [
+        { title: "Postagens", count: 100 },
+        { title: "Seguidores", count: 1000 },
+        { title: "Seguindo", count: 500 }
+      ]
+    ) %>
+
+    <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full mt-4 block mx-auto">Seguir</button>
+  </div>
+</div>
