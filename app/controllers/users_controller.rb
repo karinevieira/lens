@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show]
 
   def show
-    user = UserProfile.find_by(username: params[:username]).user
+    result = Users::FindByUsername.result(username: params[:username])
 
-    render Users::ShowPage.new(user: user)
+    render Users::ShowPage.new(user: result.user)
   end
 end
