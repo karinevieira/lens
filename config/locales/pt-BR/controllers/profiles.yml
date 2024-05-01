@@ -1,0 +1,4 @@
+pt-BR:
+  profiles:
+    update:
+      notice: Perfil atualizado com sucesso
