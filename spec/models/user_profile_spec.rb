@@ -24,6 +24,8 @@ RSpec.describe UserProfile do
 
     it { is_expected.to validate_exclusion_of(:username).in_array(UserProfile::NOT_ALLOWED_USERNAMES) }
 
+    it { is_expected.to validate_content_type_of(:avatar).allowing("image/png", "image/jpeg") }
+
     it "validates uniqueness of username" do
       profile = create(:user_profile)
       expect(profile).to validate_uniqueness_of(:username).case_insensitive
