@@ -1,0 +1,26 @@
+<%# meta_tags %>
+<div class="m-12">
+  <%= form_for(user.profile, url: profile_path, builder: ComponentBuilder, data: { turbo: false }) do |f| %>
+    <%= render(Form::LayoutComponent.new) do |layout| %>
+      <% layout.header { t("profiles.edit_page.edit_profile") } %>
+
+      <div class="mb-6">
+        <%= f.label_component :avatar, t("profiles.edit_page.avatar") %>
+        <%= f.file_field :avatar %>
+      </div>
+
+      <%= f.text_field_component(:display_name, type: "text", id: "display_name") do |input| %>
+        <% input.label { t("profiles.edit_page.display_name") } %>
+      <% end %>
+
+      <div class="mb-6">
+        <%= f.label_component :bio, t("profiles.edit_page.bio") %>
+        <%= f.text_area :bio, rows: "4", class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" %>
+      </div>
+
+      <%= f.button_component t("profiles.edit_page.update_profile") %>
+    <% end %>
+  <% end %>
+
+  <%= render Application::NavbarComponent.new %>
+</div>

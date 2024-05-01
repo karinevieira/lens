@@ -1,0 +1,8 @@
+pt-BR:
+  profiles:
+    edit_page:
+      edit_profile: Editar perfil
+      avatar: Foto de perfil
+      display_name: Nome
+      bio: Bio
+      update_profile: Atualizar perfil
