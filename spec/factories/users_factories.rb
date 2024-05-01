@@ -6,7 +6,7 @@ FactoryBot.define do
     password { "password" }
 
     transient do
-      sequence(:username) { |n| "janedoe#{n}" }
+      sequence(:username) { |n| "test#{n}" }
     end
 
     profile_attributes do
