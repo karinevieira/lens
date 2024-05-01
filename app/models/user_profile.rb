@@ -10,6 +10,8 @@ class UserProfile < ApplicationRecord
 
   belongs_to :user
 
+  has_one_attached :avatar
+
   validates :display_name, presence: true
   validates :username, presence: true
 
@@ -18,4 +20,6 @@ class UserProfile < ApplicationRecord
   validates :username, format: { with: USERNAME_REGEX }
 
   validates :username, exclusion: { in: NOT_ALLOWED_USERNAMES }
+
+  validates :avatar, content_type: %i[png jpg jpeg]
 end
