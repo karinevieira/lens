@@ -6,6 +6,6 @@ class UsersController < ApplicationController
   def show
     result = Users::FindByUsername.result(username: params[:username])
 
-    render Users::ShowPage.new(user: result.user)
+    render Users::ShowPage.new(current_user: current_user, user: result.user)
   end
 end

@@ -2,10 +2,12 @@
 
 module Profiles
   class EditPage < ApplicationPage
-    attr_reader :user
-
     def initialize(user:)
       @user = user
     end
+
+    private
+
+    attr_reader :user
   end
 end

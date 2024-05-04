@@ -21,4 +21,6 @@
   </div>
 </div>
 
-<%= render Application::NavbarComponent.new %>
+<% if current_user.present? %>
+  <%= render Application::NavbarComponent.new(current_user: current_user) %>
+<% end %>
