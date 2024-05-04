@@ -22,5 +22,5 @@
     <% end %>
   <% end %>
 
-  <%= render Application::NavbarComponent.new %>
+  <%= render Application::NavbarComponent.new(current_user: user) %>
 </div>

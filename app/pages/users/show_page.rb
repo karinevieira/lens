@@ -2,10 +2,13 @@
 
 module Users
   class ShowPage < ApplicationPage
-    attr_reader :user
-
-    def initialize(user:)
+    def initialize(current_user:, user:)
+      @current_user = current_user
       @user = user
     end
+
+    private
+
+    attr_reader :current_user, :user
   end
 end

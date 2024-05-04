@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
   def new
     respond_to do |format|
-      format.html { render Posts::NewPage.new(post: Post.new) }
+      format.html { render Posts::NewPage.new(current_user: current_user, post: Post.new) }
     end
   end
 

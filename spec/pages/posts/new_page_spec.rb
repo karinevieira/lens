@@ -3,9 +3,9 @@
 require "rails_helper"
 
 RSpec.describe Posts::NewPage, type: :page do
-  subject(:rendered) { render_inline(described_class.new(post: Post.new)) }
-
   it "renders without problems" do
+    current_user = create(:user)
+    rendered = render_inline(described_class.new(current_user: current_user, post: Post.new))
     expect(rendered.to_html).to be_present
   end
 end

@@ -2,11 +2,13 @@
 
 module Posts
   class IndexPage < ApplicationPage
-    attr_reader :posts, :user
-
     def initialize(posts:, user:)
       @posts = posts
       @user = user
     end
+
+    private
+
+    attr_reader :posts, :user
   end
 end
