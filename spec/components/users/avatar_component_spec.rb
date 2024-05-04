@@ -3,19 +3,26 @@
 require "rails_helper"
 
 RSpec.describe Users::AvatarComponent, type: :component do
-  context "when image_url is given" do
+  context "when user has an avatar" do
     it "renders user's avatar image" do
-      rendered = render_inline(described_class.new(image_url: "https://i.pravatar.cc/150?img=3"))
+      avatar = Rack::Test::UploadedFile.new(
+        Rails.root.join("spec/fixtures/files/image.png"), "image/png"
+      )
+      profile = create(:user_profile, avatar: avatar)
+      user = create(:user, profile: profile)
 
-      expect(rendered).to have_css("img[src*='https://i.pravatar.cc/150?img=3']")
+      rendered = render_inline(described_class.new(user: user))
+
+      expect(rendered).to have_css("img[src*='image.png']")
     end
   end
 
-  context "when image_url isn't given" do
-    it "doesn't render user's avatar image" do
-      rendered = render_inline(described_class.new(image_url: nil))
+  context "when user doesn't have an avatar" do
+    it "renders default avatar" do
+      user = create(:user)
+      rendered = render_inline(described_class.new(user: user))
 
-      expect(rendered.to_html).to be_empty
+      expect(rendered).to have_css("img[src*='users/avatar']")
     end
   end
 end
