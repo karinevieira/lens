@@ -2,16 +2,16 @@
 
 module Users
   class AvatarComponent < ViewComponent::Base
-    attr_reader :image_url
-
-    def initialize(image_url:)
-      @image_url = image_url
+    def initialize(user:)
+      @user = user
     end
 
     private
 
-    def render?
-      image_url.present?
+    attr_reader :user
+
+    def image_url
+      user.profile.avatar.present? ? url_for(user.profile.avatar) : "users/avatar.png"
     end
   end
 end
