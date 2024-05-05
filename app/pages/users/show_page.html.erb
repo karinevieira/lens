@@ -15,7 +15,9 @@
     ) %>
 
     <div class="flex">
-      <%= link_to I18n.t("users.show_page.edit"), edit_profile_path, class: "text-gray-900 text-center bg-gray-100 font-semibold py-2 px-4 rounded-full mt-4 block mx-auto" %>
+      <% if allowed_to_edit? %>
+        <%= link_to I18n.t("users.show_page.edit"), edit_profile_path, class: "text-gray-900 text-center bg-gray-100 font-semibold py-2 px-4 rounded-full mt-4 block mx-auto" %>
+      <% end %>
       <%= link_to I18n.t("users.show_page.follow"), "#", class: "bg-blue-500 hover:bg-blue-600 text-center text-white font-bold py-2 px-4 rounded-full mt-4 block mx-auto" %>
     </div>
   </div>

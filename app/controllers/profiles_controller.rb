@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ProfilesController < ApplicationController
+  before_action :authorize_action!
+
   def edit
     respond_to do |format|
       format.html { render Profiles::EditPage.new(user: current_user) }
@@ -25,6 +27,10 @@ class ProfilesController < ApplicationController
 
   def user_profile_params
     params.require(:user_profile).permit(:avatar, :display_name, :bio).to_h
+  end
+
+  def authorize_action!
+    authorize! profile, with: ProfilePolicy
   end
 
   def profile
