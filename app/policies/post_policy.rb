@@ -1,31 +1,14 @@
 # frozen_string_literal: true
 
 class PostPolicy < ApplicationPolicy
-  def index?
-    true
-  end
-
-  def new?
-    true
-  end
+  alias_rule :index?, :new?, to: :create?
+  alias_rule :edit?, :destroy?, to: :update?
 
   def create?
     true
   end
 
-  def edit?
-    deny_non_post_creators!
-
-    true
-  end
-
   def update?
-    deny_non_post_creators!
-
-    true
-  end
-
-  def destroy?
     deny_non_post_creators!
 
     true
