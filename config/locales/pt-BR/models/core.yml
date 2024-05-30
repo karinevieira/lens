@@ -13,14 +13,14 @@ pt-BR:
 
       post:
         subtitle: Legenda
-        image: Imagem
+        image: Foto
         user: Usuário
 
       user_profile:
         user: Usuário
         username: "@"
-        display_name: Nome do usuário
-        bio: "Sobre"
+        display_name: Nome
+        bio: Sobre
         avatar: Foto de perfil
 
       user:

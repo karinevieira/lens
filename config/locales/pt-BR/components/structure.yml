@@ -4,5 +4,5 @@ pt-BR:
       edit: Editar
       delete: Deletar
       likes_count:
-        one: "%{count} Like"
-        other: "%{count} Likes"
+        one: "%{count} curtida"
+        other: "%{count} curtidas"
