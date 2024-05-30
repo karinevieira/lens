@@ -3,6 +3,6 @@ pt-BR:
     navbar_component:
       home: Início
       search: Buscar
-      new: Novo post
+      new: Nova publicação
       profile: Perfil
       sign_out: Sair

@@ -10,6 +10,6 @@ RSpec.describe Application::ErrorSummaryComponent, type: :component do
     rendered = render_inline(described_class.new(record: invalid_post))
 
     expect(rendered).to have_text("Usuário é obrigatório")
-      .and(have_text("Imagem não pode ficar em branco"))
+      .and(have_text("Foto não pode ficar em branco"))
   end
 end
