@@ -1,0 +1,5 @@
+<%= render Form::ErrorSummaryComponent.new do |summary| %>
+  <% errors.each do |attribute, message| %>
+    <%= summary.error { format_error_message(attribute, message) } %>
+  <% end %>
+<% end %>

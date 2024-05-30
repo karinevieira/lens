@@ -1,0 +1,28 @@
+pt-BR:
+  activerecord:
+    models:
+      like: Curtida
+      post: Publicação
+      user_profile: Perfil
+      user: Usuário
+
+    attributes:
+      like:
+        post: Publicação
+        user: Usuário
+
+      post:
+        subtitle: Legenda
+        image: Imagem
+        user: Usuário
+
+      user_profile:
+        user: Usuário
+        username: "@"
+        display_name: Nome do usuário
+        bio: "Sobre"
+        avatar: Foto de perfil
+
+      user:
+        email: E-mail
+        password: Senha
