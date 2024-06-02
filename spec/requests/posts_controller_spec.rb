@@ -47,8 +47,29 @@ RSpec.describe PostsController do
   describe "PUT #update" do
     it "requires authentication" do
       post = create(:post)
+      params = { post: { subtitle: "New subtitle" } }
 
-      put post_path(post), params: { post: { subtitle: "New subtitle" } }
+      put post_path(post), params: params
+
+      expect(response).to redirect_to(new_user_session_path)
+    end
+
+    it "requires authorization" do
+      user = sign_in
+      post = create(:post, user: user)
+      params = { post: { subtitle: "New subtitle" } }
+
+      expect do
+        put post_path(post), params: params
+      end.to be_authorized_to(:update?, post).with(PostPolicy)
+    end
+  end
+
+  describe "DELETE #destroy" do
+    it "requires authentication" do
+      post = create(:post)
+
+      delete post_path(post)
 
       expect(response).to redirect_to(new_user_session_path)
     end
@@ -57,9 +78,7 @@ RSpec.describe PostsController do
       user = sign_in
       post = create(:post, user: user)
 
-      expect do
-        put post_path(post), params: { post: { subtitle: "New subtitle" } }
-      end.to be_authorized_to(:update?, post).with(PostPolicy)
+      expect { delete post_path(post) }.to be_authorized_to(:update?, post).with(PostPolicy)
     end
   end
 end
