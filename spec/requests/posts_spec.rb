@@ -2,35 +2,64 @@
 
 require "rails_helper"
 
-RSpec.describe "Posts" do
-  describe "GET /index" do
-    it "returns http status ok" do
+RSpec.describe PostsController do
+  describe "GET #index" do
+    it "requires authentication" do
       get posts_path
 
-      expect(response).to have_http_status :found
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 
-  describe "GET /new" do
-    it "returns http status ok" do
+  describe "GET #new" do
+    it "requires authentication" do
       get new_post_path
 
-      expect(response).to have_http_status :found
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 
-  describe "POST /posts" do
-    it "returns http status found" do
-      params = {
-        post:
-        {
-          subtitle: "My test subtitle",
-          image: Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/files/image.png"), "image/png")
-        }
-      }
-      post posts_path, params: params
+  describe "GET #edit" do
+    it "requires authentication" do
+      post = create(:post)
 
-      expect(response).to have_http_status :found
+      get edit_post_path(post)
+
+      expect(response).to redirect_to(new_user_session_path)
+    end
+
+    it "requires authorization" do
+      user = sign_in
+      post = create(:post, user: user)
+
+      expect { get edit_post_path(post) }.to be_authorized_to(:update?, post).with(PostPolicy)
+    end
+  end
+
+  describe "POST #create" do
+    it "requires authentication" do
+      post posts_path
+
+      expect(response).to redirect_to(new_user_session_path)
+    end
+  end
+
+  describe "PUT #update" do
+    it "requires authentication" do
+      post = create(:post)
+
+      put post_path(post), params: { post: { subtitle: "New subtitle" } }
+
+      expect(response).to redirect_to(new_user_session_path)
+    end
+
+    it "requires authorization" do
+      user = sign_in
+      post = create(:post, user: user)
+
+      expect do
+        put post_path(post), params: { post: { subtitle: "New subtitle" } }
+      end.to be_authorized_to(:update?, post).with(PostPolicy)
     end
   end
 end
