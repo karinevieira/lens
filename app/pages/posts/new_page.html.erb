@@ -4,6 +4,8 @@
     <%= render(Form::LayoutComponent.new) do |layout| %>
       <% layout.header { t("posts.new_page.new_post") } %>
 
+      <%= render Application::ErrorSummaryComponent.new(record: post) %>
+
       <%= f.file_field_component :image do |slot| %>
         <% slot.label { t("posts.new_page.image") } %>
       <% end %>

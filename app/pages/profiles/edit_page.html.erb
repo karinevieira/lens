@@ -4,6 +4,8 @@
     <%= render(Form::LayoutComponent.new) do |layout| %>
       <% layout.header { t("profiles.edit_page.edit_profile") } %>
 
+      <%= render Application::ErrorSummaryComponent.new(record: user.profile) %>
+
       <div class="mb-6">
         <%= f.label_component :avatar, t("profiles.edit_page.avatar") %>
         <%= f.file_field :avatar %>

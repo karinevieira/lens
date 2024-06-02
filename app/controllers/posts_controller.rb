@@ -31,7 +31,7 @@ class PostsController < ApplicationController
         format.html { redirect_to root_path, notice: t(".notice") }
       else
         format.html do
-          render Posts::NewPage.new(post: result.post), status: :unprocessable_entity
+          render Posts::NewPage.new(current_user: current_user, post: result.post), status: :unprocessable_entity
         end
       end
     end

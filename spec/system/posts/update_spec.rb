@@ -17,10 +17,4 @@ RSpec.describe "Update post" do
       expect(page).to have_text("test subtitle")
     end
   end
-
-  context "with invalid form" do
-    it "re-renders form with error" do
-      skip "it needs to be implemented"
-    end
-  end
 end
