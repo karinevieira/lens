@@ -1,0 +1,15 @@
+<div class="py-2 px-5">
+  <%= turbo_frame_tag post do %>
+    <div class="flex mb-3">
+      <p class="text-base font-normal text-gray-700"><%= post.subtitle %></p>
+    </div>
+
+    <% if show_action?(rule: :edit?) %>
+      <%= edit_action %>
+    <% end %>
+
+    <% if show_action?(rule: :destroy?) %>
+      <%= delete_action %>
+    <% end %>
+  <% end %>
+</div>
