@@ -10,7 +10,7 @@ RSpec.describe "Update post" do
 
       visit root_path
 
-      click_link(I18n.t("structure.card_component.edit"))
+      click_link(I18n.t("posts.card_component.edit"))
       fill_in "Your subtitle", with: "test subtitle"
       click_button("Edit post")
 

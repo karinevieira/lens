@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Structure::CardComponent, type: :component do
+RSpec.describe Posts::CardComponent, type: :component do
   it "renders the image" do
     user = build_stubbed(:user)
     post = build_stubbed(:post, id: SecureRandom.uuid)
@@ -56,7 +56,7 @@ RSpec.describe Structure::CardComponent, type: :component do
     post = create(:post)
     create(:like, user: user, post: post)
     rendered = render_inline(described_class.new(post: post, user: user))
-    likes_count = I18n.t("structure.card_component.likes_count", count: post.likes.count)
+    likes_count = I18n.t("posts.card_component.likes_count", count: post.likes.count)
 
     expect(rendered.to_html).to have_css("p", text: likes_count)
   end
@@ -91,7 +91,7 @@ RSpec.describe Structure::CardComponent, type: :component do
       allow(component).to receive(:allowed_to?).with(:destroy?, post, context: { user: user }).and_return(true)
 
       rendered = render_inline(component)
-      link_text = I18n.t("structure.card_component.edit")
+      link_text = I18n.t("posts.card_component.edit")
 
       expect(rendered.to_html).to have_link(link_text, href: edit_post_path(post))
     end
@@ -105,7 +105,7 @@ RSpec.describe Structure::CardComponent, type: :component do
       allow(component).to receive(:allowed_to?).with(:destroy?, post, context: { user: user }).and_return(true)
 
       rendered = render_inline(component)
-      link_text = I18n.t("structure.card_component.delete")
+      link_text = I18n.t("posts.card_component.delete")
 
       expect(rendered.to_html).to have_link(link_text, href: post_path(post))
     end
@@ -121,7 +121,7 @@ RSpec.describe Structure::CardComponent, type: :component do
       allow(component).to receive(:allowed_to?).with(:destroy?, post, context: { user: user }).and_return(false)
 
       rendered = render_inline(component)
-      link_text = I18n.t("structure.card_component.edit")
+      link_text = I18n.t("posts.card_component.edit")
 
       expect(rendered.to_html).not_to have_link(link_text, href: edit_post_path(post))
     end
@@ -135,7 +135,7 @@ RSpec.describe Structure::CardComponent, type: :component do
       allow(component).to receive(:allowed_to?).with(:destroy?, post, context: { user: user }).and_return(false)
 
       rendered = render_inline(component)
-      link_text = I18n.t("structure.card_component.delete")
+      link_text = I18n.t("posts.card_component.delete")
 
       expect(rendered.to_html).not_to have_link(link_text, href: post_path(post))
     end
