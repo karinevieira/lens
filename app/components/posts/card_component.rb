@@ -7,11 +7,12 @@ module Posts
     def initialize(post:, user:)
       @post = post
       @user = user
+      @owner = post.user.profile.username
     end
 
     private
 
-    attr_reader :post, :user
+    attr_reader :post, :user, :owner
 
     def image
       image_tag(url_for(post.image))
