@@ -1,17 +1,16 @@
 # frozen_string_literal: true
 
 module Users
-  class CardComponent < ViewComponent::Base
-    with_collection_parameter :user
+  class ProfileCardComponent < ViewComponent::Base
+    with_collection_parameter :profile
 
-    def initialize(user:)
-      @user = user
-      @profile = user.profile
+    def initialize(profile:)
+      @profile = profile
     end
 
     private
 
-    attr_reader :user, :profile
+    attr_reader :profile
 
     def avatar_image_url
       avatar = profile.avatar
