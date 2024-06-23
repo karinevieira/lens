@@ -19,15 +19,22 @@ jobs:
         with:
           output: ' '
 
-      - name: Echo file changes
+      - name: Filter Ruby files
+        id: filter_ruby_files
         run: |
-          echo Changed files: ${{ steps.get_file_changes.outputs.files }}
+          files="${{ steps.get_file_changes.outputs.files }}"
+          ruby_files=$(echo "$files" | tr ' ' '\n' | grep '\.rb$' | tr '\n' ' ')
+          echo "::set-output name=ruby_files::$ruby_files"
+
+      - name: Echo Ruby file changes
+        run: |
+          echo Changed Ruby files: ${{ steps.filter_ruby_files.outputs.ruby_files }}
 
       - name: Lint Pull Request
         uses: wearerequired/lint-action@v2
         with:
           rubocop: true
-          rubocop_args: --fail-level C --display-only-fail-level-offenses ${{ steps.get_file_changes.outputs.files}}
+          rubocop_args: --fail-level C --display-only-fail-level-offenses ${{ steps.filter_ruby_files.outputs.ruby_files }}
           rubocop_command_prefix: bundle exec
 
       - name: Lint Ruby files
