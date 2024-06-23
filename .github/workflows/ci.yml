@@ -13,6 +13,23 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Get file changes
+        id: get_file_changes
+        uses: trilom/file-changes-action@v1.2.3
+        with:
+          output: ' '
+
+      - name: Echo file changes
+        run: |
+          echo Changed files: ${{ steps.get_file_changes.outputs.files }}
+
+      - name: Lint Pull Request
+        uses: wearerequired/lint-action@v2
+        with:
+          rubocop: true
+          rubocop_args: --fail-level C --display-only-fail-level-offenses ${{ steps.get_file_changes.outputs.files}}
+          rubocop_command_prefix: bundle exec
+
       - name: Lint Ruby files
         run: bundle exec rubocop
 

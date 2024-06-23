@@ -11,7 +11,7 @@ RSpec.describe User do
     it { is_expected.to accept_nested_attributes_for(:profile) }
   end
 
-  describe "validations" do
+  describe 'validations' do
     it { is_expected.to validate_presence_of(:profile) }
   end
 end
