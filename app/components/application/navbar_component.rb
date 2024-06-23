@@ -15,6 +15,10 @@ module Application
       current_page?(controller: "posts", action: "index")
     end
 
+    def activate_search_item?
+      current_page?(controller: "profiles", action: "index")
+    end
+
     def activate_new_post_item?
       current_page?(controller: "posts", action: "new")
     end

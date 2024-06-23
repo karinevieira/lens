@@ -1,0 +1,19 @@
+
+<div class="container mx-auto flex flex-col justify-center items-center mt-8 w-full">
+  <div class="max-w-md mx-auto w-full">
+    <%= form_tag profiles_path, method: :get do |f| %>
+      <div class="relative w-full">
+        <%= text_field_tag "search",
+          @search,
+          placeholder: "Search for users",
+          autocomplete: "on",
+          class: "block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" %>
+      </div>
+    <% end %>
+
+    <div class="grid grid-cols-1 gap-4 my-10 w-full">
+      <%= render Users::ProfileCardComponent.with_collection(profiles) %>
+    </div>
+  </div>
+</div>
+<%= render Application::NavbarComponent.new(current_user: user) %>

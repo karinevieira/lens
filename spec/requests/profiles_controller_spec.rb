@@ -3,6 +3,14 @@
 require "rails_helper"
 
 RSpec.describe ProfilesController do
+  describe "GET #index" do
+    it "requires authentication" do
+      get profiles_path
+
+      expect(response).to redirect_to(new_user_session_path)
+    end
+  end
+
   describe "GET #edit" do
     it "requires authentication" do
       get edit_profile_path

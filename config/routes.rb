@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :likes, only: %i[create destroy]
   end
 
+  resources :profiles, only: :index
   resource :profile, only: %i[edit update]
 
   mount Lookbook::Engine, at: "lookbook"

@@ -18,7 +18,7 @@ RSpec.describe Application::NavbarComponent, type: :component do
     rendered = render_inline(described_class.new(current_user: current_user))
     item_text = I18n.t("application.navbar_component.search")
 
-    expect(rendered.to_html).to have_link(item_text, href: "#")
+    expect(rendered.to_html).to have_link(item_text, href: profiles_path)
   end
 
   it "renders the New item" do
