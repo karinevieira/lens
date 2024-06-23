@@ -2,4 +2,4 @@
   <%= render Posts::CardComponent.with_collection(posts, user: user) %>
 </div>
 
-<%= render Application::NavbarComponent.new(current_user: user, current_controller: controller) %>
+<%= render Application::NavbarComponent.new(current_user: user) %>
