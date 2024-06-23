@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 class ProfilesController < ApplicationController
-  before_action :authorize_action!
+  before_action :authorize_action!, except: :index
+
+  def index
+    result = UserProfiles::Find.result(search: params[:search])
+
+    render Profiles::IndexPage.new(user: current_user, profiles: result.profiles)
+  end
 
   def edit
     respond_to do |format|
