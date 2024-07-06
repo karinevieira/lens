@@ -1,12 +1,17 @@
 pt-BR:
   activerecord:
     models:
+      follow: Seguir
       like: Curtida
       post: Publicação
       user_profile: Perfil
       user: Usuário
 
     attributes:
+      follow:
+        follower: Seguidor
+        followed: Seguido
+
       like:
         post: Publicação
         user: Usuário
@@ -26,3 +31,8 @@ pt-BR:
       user:
         email: E-mail
         password: Senha
+
+    errors:
+      models:
+        follow:
+          follower_and_followed_cannot_be_the_same: Não é possível seguir a si mesmo
