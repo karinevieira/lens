@@ -7,7 +7,7 @@ class FollowsController < ApplicationController
     if result.success?
       flash[:notice] = t(".notice", followed: username)
     else
-      flash[:alert] = t(".alert", followed: username)
+      flash[:alert] = error_message(result.follow)
     end
 
     redirect_to user_path(username: username)
@@ -33,5 +33,9 @@ class FollowsController < ApplicationController
 
   def username
     params[:username]
+  end
+
+  def error_message(follow)
+    follow.errors.full_messages.to_sentence
   end
 end

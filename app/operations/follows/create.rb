@@ -5,8 +5,10 @@ module Follows
     input :follower, type: User
     input :followed, type: User
 
+    output :follow, type: Follow
+
     def call
-      follow = Follow.new(follower: follower, followed: followed)
+      self.follow = Follow.new(follower: follower, followed: followed)
 
       fail!(error: :invalid_record) unless follow.save
     end
