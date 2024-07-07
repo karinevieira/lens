@@ -1,0 +1,8 @@
+pt-BR:
+  follows:
+    create:
+      notice: "Você começou a seguir %{followed}"
+      alert: "Houve um erro ao seguir %{followed}"
+    destroy:
+      notice: "Você deixou de seguir %{followed}"
+      alert: "Houve um erro ao deixar de seguir %{followed}"
