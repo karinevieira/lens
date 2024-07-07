@@ -3,22 +3,27 @@
     <%= render Users::AvatarComponent.new(user: user) %>
 
     <h1 class="text-xl font-bold text-center"><%= user.profile.display_name %></h1>
-    <p class="text-gray-600 text-center">@<%= user.profile.username %></p>
+    <p class="text-gray-600 text-center">@<%= username %></p>
     <p class="text-gray-700 text-center mt-4"><%= user.profile.bio %></p>
 
     <%= render Users::ProfileStatsComponent.new(
       stats: [
-        { title: "Postagens", count: 100 },
-        { title: "Seguidores", count: 1000 },
-        { title: "Seguindo", count: 500 }
+        { title: "Postagens", count: user.posts.count },
+        { title: "Seguidores", count: user.followers.count },
+        { title: "Seguindo", count: user.following.count }
       ]
     ) %>
 
-    <div class="flex">
+    <div class="flex justify-center">
       <% if allowed_to_edit? %>
         <%= link_to I18n.t("users.show_page.edit"), edit_profile_path, class: "text-gray-900 text-center bg-gray-100 font-semibold py-2 px-4 rounded-full mt-4 block mx-auto" %>
       <% end %>
-      <%= link_to I18n.t("users.show_page.follow"), "#", class: "bg-blue-500 hover:bg-blue-600 text-center text-white font-bold py-2 px-4 rounded-full mt-4 block mx-auto" %>
+
+      <% if current_user&.following?(user) %>
+        <%= button_to I18n.t("users.show_page.following"), user_unfollow_path(username), { method: :delete, data: { turbo: false }, class: "bg-blue-500 hover:bg-blue-600 text-center text-white font-bold py-2 px-4 rounded-full mt-4 block mx-auto" } %>
+      <% else %>
+        <%= button_to I18n.t("users.show_page.follow"), user_follow_path(username), { data: { turbo: false }, class: "bg-blue-500 hover:bg-blue-600 text-center text-white font-bold py-2 px-4 rounded-full mt-4 block mx-auto" } %>
+      <% end %>
     </div>
   </div>
 </div>

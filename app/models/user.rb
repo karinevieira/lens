@@ -20,4 +20,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile, update_only: true
 
   validates :profile, presence: true
+
+  def following?(user)
+    following.exists?(user.id)
+  end
 end

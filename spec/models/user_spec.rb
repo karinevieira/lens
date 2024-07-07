@@ -27,4 +27,31 @@ RSpec.describe User do
   describe "validations" do
     it { is_expected.to validate_presence_of(:profile) }
   end
+
+  describe "#following?" do
+    context "when current user is following the user" do
+      it "returns true" do
+        current_user = create(:user)
+        user = create(:user)
+        create(:follow, follower: current_user, followed: user)
+
+        result = current_user.following?(user)
+
+        expect(result).to be true
+      end
+    end
+
+    context "when current user is not following the user" do
+      it "returns false" do
+        current_user = create(:user)
+        user = build_stubbed(:user)
+        another_user = create(:user)
+        create(:follow, follower: current_user, followed: another_user)
+
+        result = current_user.following?(user)
+
+        expect(result).to be false
+      end
+    end
+  end
 end

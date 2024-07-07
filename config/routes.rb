@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get "/@:username", to: "users#show", as: :user
+  scope "@:username", as: "user", controller: "users", param: :username do
+    get "", action: :show
+    post "follow", to: "follows#create", as: :follow
+    delete "unfollow", to: "follows#destroy", as: :unfollow
+  end
 
   resources :posts do
     resources :likes, only: %i[create destroy]
