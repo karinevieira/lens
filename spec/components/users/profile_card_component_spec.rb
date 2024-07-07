@@ -25,6 +25,14 @@ RSpec.describe Users::ProfileCardComponent, type: :component do
     end
   end
 
+  it "contains link to visit the profile page" do
+    profile = build_stubbed(:user_profile, username: "niallhoran")
+
+    rendered = render_inline(described_class.new(profile: profile))
+
+    expect(rendered).to have_link(href: user_path(profile.username))
+  end
+
   it "renders profile's username" do
     profile = build_stubbed(:user_profile, username: "niallhoran")
 

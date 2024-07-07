@@ -1,7 +1,9 @@
-<div class="flex items-center gap-4">
-  <%= image_tag(avatar_image_url, class: "w-10 h-10 rounded-full") %>
-  <div class="font-medium text-gray-800">
-    <div><%= profile.username %></div>
-    <div class="text-sm text-gray-500"><%= profile.display_name %></div>
+<%= link_to user_path(profile.username) do %>
+  <div class="flex items-center gap-4">
+    <%= image_tag(avatar_image_url, class: "w-10 h-10 rounded-full") %>
+    <div class="font-medium text-gray-800">
+      <div><%= profile.username %></div>
+      <div class="text-sm text-gray-500"><%= profile.display_name %></div>
+    </div>
   </div>
-</div>
+<% end %>
