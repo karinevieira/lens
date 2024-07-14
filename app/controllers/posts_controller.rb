@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :authorize_action!, only: %i[edit update destroy]
 
   def index
-    result = Posts::List.result
+    result = Posts::FeedList.result(current_user: current_user)
 
     respond_to do |format|
       format.html { render Posts::IndexPage.new(posts: result.posts, user: current_user) }
