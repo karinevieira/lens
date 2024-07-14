@@ -15,5 +15,9 @@ module Users
     def allowed_to_edit?
       current_user.present? && allowed_to?(:edit?, user.profile, context: { user: current_user }, with: ProfilePolicy)
     end
+
+    def allowed_to_follow?
+      current_user != user
+    end
   end
 end
