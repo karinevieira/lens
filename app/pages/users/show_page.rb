@@ -4,7 +4,7 @@ module Users
   class ShowPage < ApplicationPage
     def initialize(user:, current_user: nil)
       @user = user
-      @username = @user.profile.username
+      @username = @user.profile_username
       @current_user = current_user
     end
 

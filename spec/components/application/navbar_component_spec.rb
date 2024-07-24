@@ -36,7 +36,7 @@ RSpec.describe Application::NavbarComponent, type: :component do
     rendered = render_inline(described_class.new(current_user: current_user))
     item_text = I18n.t("application.navbar_component.profile")
 
-    expect(rendered.to_html).to have_link(item_text, href: user_path(username: current_user.profile.username))
+    expect(rendered.to_html).to have_link(item_text, href: user_path(username: current_user.profile_username))
   end
 
   it "renders the Sign out item" do
