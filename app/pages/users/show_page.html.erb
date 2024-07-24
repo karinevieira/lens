@@ -2,9 +2,9 @@
   <div class="bg-white p-4 sm:w-1/2 md:w-1/3 lg:w-1/4">
     <%= render Users::AvatarComponent.new(user: user) %>
 
-    <h1 class="text-xl font-bold text-center"><%= user.profile.display_name %></h1>
+    <h1 class="text-xl font-bold text-center"><%= user.profile_display_name %></h1>
     <p class="text-gray-600 text-center">@<%= username %></p>
-    <p class="text-gray-700 text-center mt-4"><%= user.profile.bio %></p>
+    <p class="text-gray-700 text-center mt-4"><%= user.profile_bio %></p>
 
     <%= render Users::ProfileStatsComponent.new(
       stats: [

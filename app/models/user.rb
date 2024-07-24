@@ -21,6 +21,8 @@ class User < ApplicationRecord
 
   validates :profile, presence: true
 
+  delegate :bio, :display_name, :username, to: :profile, prefix: true
+
   def following?(user)
     following.exists?(user.id)
   end

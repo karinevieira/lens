@@ -7,7 +7,7 @@ module Posts
     def initialize(post:, current_user:)
       @post = post
       @current_user = current_user
-      @username = @post.user.profile.username
+      @username = @post.user.profile_username
     end
 
     private
